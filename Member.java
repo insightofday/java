@@ -1,42 +1,36 @@
-package oop;
+package CF;
 
 public class Member {
-	private String id;
-	private String pw;
-	private String name;
-	private int age;
+	//hashsetex와 연결됨
+	protected String name;
+	protected int age;
 	
-	Member(){
-		
-	}
-	
-
-	public int getAll() {
-		return age;
+	public Member(String name, int age) {
+		this.name=name;
+		this.age =age;
 	}
 
-	public void setAll(int age ) {
-		this.age=(age<0) ? age=0:++age;
-//		if(age<0) {
-//			age=0;
-//		}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + age;
+//		result = prime * result + ((name == null) ? 0 : name.hashCode());
+//		return result;
+//	}
+	@Override
+	public int hashCode() {
+		return name.hashCode()+age;
 	}
 
-
-	public void setId(String id) {
-		this.id = id;
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Member) {
+			Member member=(Member)obj;
+			if(name.equals(member.name)&&age==(member.age)) {
+				return true;	
+			}
+		}return false;
 	}
 
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	
 }

@@ -1,28 +1,27 @@
-package oop;
+package CF;
 
-public class Student {
-	String name;
-	int grade;
-	int kor;
-	int eng;
-	int math;
+public class Student {//hashmap_ex2와 관련있음
+	public int sno;
+	public String sname;
+	
+	public Student(int sno,String sname) {
+		this.sno=sno;
+		this.sname=sname;
+	}
+
+	@Override
+	public int hashCode() {
+
+		return sno+sname.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Student) {
+			Student std=(Student)obj;
+			return (sno==std.sno)&&(sname.equals(std.sname));
+		}return false;
+	}
 	
 	
-	Student(){
-		
-	}
-	Student(String name, int grade,int kor,int eng,int math){
-		this.name=name;
-		this.grade=grade;
-		this.kor=kor;
-		this.eng=eng;
-		this.math=math;
-	}
-	void getInfo(){
-		System.out.println("이름은"+name);
-		System.out.println("학년은"+grade);
-		System.out.println("국어성적은"+kor);
-		System.out.println("영어성적은"+eng);
-		System.out.println("수학성적은"+math);
-	}
 }
